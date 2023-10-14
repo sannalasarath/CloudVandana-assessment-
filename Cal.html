@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .calculator {
+            width: 200px;
+            margin: 0 auto;
+        }
+        .calculator input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+        }
+        .calculator table {
+            width: 100%;
+        }
+        .calculator button {
+            width: 25%;
+            padding: 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <table>
+            <tr>
+                <td><button onclick="clearDisplay()">C</button></td>
+                <td><button onclick="appendToDisplay('7')">7</button></td>
+                <td><button onclick="appendToDisplay('8')">8</button></td>
+                <td><button onclick="appendToDisplay('9')">9</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('4')">4</button></td>
+                <td><button onclick="appendToDisplay('5')">5</button></td>
+                <td><button onclick="appendToDisplay('6')">6</button></td>
+                <td><button onclick="appendToDisplay('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('1')">1</button></td>
+                <td><button onclick="appendToDisplay('2')">2</button></td>
+                <td><button onclick="appendToDisplay('3')">3</button></td>
+                <td><button onclick="appendToDisplay('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('0')">0</button></td>
+                <td><button onclick="appendToDisplay('.')">.</button></td>
+                <td><button onclick="calculate()">=</button></td>
+                <td><button onclick="appendToDisplay('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendToDisplay('/')">/</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById("display").value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+
+        function calculate() {
+            try {
+                document.getElementById("display").value = eval(document.getElementById("display").value);
+            } catch (error) {
+                document.getElementById("display").value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
